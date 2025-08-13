@@ -10,6 +10,7 @@ import useFetch from "@/services/useFetch";
 
 import MovieCard from "@/components/MovieCard";
 import SearchBar from "@/components/SearchBar";
+import { updateSearchCount } from "@/services/appwrite";
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -32,6 +33,10 @@ const Search = () => {
       if (searchQuery.trim()) {
         await loadMovies();
 
+        // Call updateSearchCount only if there are results
+        if (movies?.length! > 0 && movies?.[0]) {
+          await updateSearchCount(searchQuery, movies[0]);
+        }
       } else {
         reset();
       }
