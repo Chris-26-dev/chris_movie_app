@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "chris_movie_app",
+    "name": "ChrisMovie",
     "slug": "chris_movie_app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/movie2.png",
     "scheme": "chrismovieapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -13,7 +13,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/images/movie2.png",
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true
@@ -21,14 +21,14 @@
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/movie2.png"
     },
     "plugins": [
       "expo-router",
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
+          "image": "./assets/images/movie2.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
