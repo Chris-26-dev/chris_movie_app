@@ -6,7 +6,6 @@ import { images } from "@/constants/images";
 
 import { fetchMovies } from "@/services/api";
 import useFetch from "@/services/useFetch";
-//import { updateSearchCount } from "@/services/appwrite";
 
 import MovieCard from "@/components/MovieCard";
 import SearchBar from "@/components/SearchBar";
@@ -28,15 +27,12 @@ const Search = () => {
   };
 
   // Debounced search effect
-    useEffect(() => {
+  useEffect(() => {
     const timeoutId = setTimeout(async () => {
       if (searchQuery.trim()) {
         await loadMovies();
 
-        // Call updateSearchCount only if there are results
-        if (movies?.length! > 0 && movies?.[0]) {
-          await updateSearchCount(searchQuery, movies[0]);
-        }
+
       } else {
         reset();
       }
@@ -44,6 +40,13 @@ const Search = () => {
 
     return () => clearTimeout(timeoutId);
   }, [searchQuery]);
+
+  useEffect(() => {
+    // Call updateSearchCount only if there are results
+    if (movies?.length! > 0 && movies?.[0]) {
+      updateSearchCount(searchQuery, movies[0]);
+    }
+  }, [movies]);
 
   return (
     <View className="flex-1 bg-primary">
