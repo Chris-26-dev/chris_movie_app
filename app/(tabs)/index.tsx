@@ -2,7 +2,6 @@ import MovieCard from "@/components/MovieCard";
 import PopularCard from "@/components/PopularCard";
 import SearchBar from "@/components/SearchBar";
 import TrendingCard from "@/components/TrendingCard";
-import { icons } from "@/constants/icons";
 import { images } from "@/constants/images";
 import { fetchGenres, fetchMovies } from "@/services/api";
 import { getPopularMovies, getTrendingMovies } from "@/services/appwrite";
@@ -136,13 +135,13 @@ export default function Index() {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ minHeight: "100%", paddingBottom: 10 }}
         onScroll={event => {
-  currentScrollY.current = event.nativeEvent.contentOffset.y;
-}}
-scrollEventThrottle={16}
+          currentScrollY.current = event.nativeEvent.contentOffset.y;
+        }}
+        scrollEventThrottle={16}
       >
-        <Image source={icons.logo} className="w-12 h-10 mt-20 mb-5 mx-auto" />
+        <View className="mt-12 mb-5 mx-auto" />
 
-        <View className="flex-1 mt-5">
+        <View className="flex-1 mt-5 ">
           <SearchBar
             onPress={() => {
               router.push("/search");

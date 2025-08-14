@@ -41,7 +41,7 @@ export default function TabsLayout() {
           backgroundColor: "#0F0D23",
           borderRadius: 50,
           marginHorizontal: 20,
-          marginBottom: 36,
+          marginBottom: 20,
           height: 52,
           position: "absolute",
           overflow: "hidden",
