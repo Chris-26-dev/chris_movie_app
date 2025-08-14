@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import HeartButton from "@/components/HeartButton";
 import { icons } from "@/constants/icons";
 import { fetchMovieDetails } from "@/services/api";
 import useFetch from "@/services/useFetch";
@@ -48,6 +49,12 @@ const Details = () => {
       </SafeAreaView>
     );
 
+  const movieData = {
+    id: movie?.id || 0,
+    title: movie?.title || "",
+    poster_path: movie?.poster_path || ""
+  };
+
   return (
     <View className="bg-primary flex-1">
       <ScrollView contentContainerStyle={{ paddingBottom: 80 }}>
@@ -71,6 +78,11 @@ const Details = () => {
               tintColor="#222"
             />
           </TouchableOpacity>
+
+          {/* Heart Button */}
+          <View className="absolute top-14 right-10 z-50">
+            <HeartButton movie={movieData} size="large" />
+          </View>
 
           <TouchableOpacity className="absolute bottom-5 right-5 rounded-full size-14 bg-white flex items-center justify-center">
             <Image
@@ -102,7 +114,7 @@ const Details = () => {
             </Text>
           </View>
 
-          <MovieInfo label="Overview" value={movie?.overview}/>
+          <MovieInfo label="Overview" value={movie?.overview} />
           <MovieInfo
             label="Genres"
             value={movie?.genres?.map((g) => g.name).join(" • ") || "N/A"}
