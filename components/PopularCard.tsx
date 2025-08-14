@@ -5,10 +5,10 @@ import { Image, Text, TouchableOpacity, View } from "react-native";
 import { images } from "@/constants/images";
 import HeartButton from "./HeartButton";
 
-const TrendingCard = ({
+const PopularCard = ({
   movie: { movie_id, title, poster_url },
   index,
-}: TrendingCardProps) => {
+}: PopularCardProps) => {
   const movieData = { id: movie_id, title, poster_path: poster_url.replace('https://image.tmdb.org/t/p/w500', '') };
 
   return (
@@ -59,4 +59,4 @@ const TrendingCard = ({
   );
 };
 
-export default TrendingCard;
+export default PopularCard;
