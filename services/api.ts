@@ -1,33 +1,41 @@
 export const TMDB_CONFIG = {
-    BASE_URL: "https://api.themoviedb.org/3",
-    API_KEY: process.env.EXPO_PUBLIC_MOVIE_API_KEY,
-    headers: {
-        accept: "application/json",
-        Authorization: `Bearer ${process.env.EXPO_PUBLIC_MOVIE_API_KEY}`,
-    },
+  BASE_URL: "https://api.themoviedb.org/3",
+  API_KEY: process.env.EXPO_PUBLIC_MOVIE_API_KEY,
+  headers: {
+    accept: "application/json",
+    Authorization: `Bearer ${process.env.EXPO_PUBLIC_MOVIE_API_KEY}`,
+  },
 };
 
 export const fetchMovies = async ({
-    query,
+  query,
+  genreId,
 }: {
-    query: string;
+  query: string;
+  genreId?: number | null;
 }): Promise<Movie[]> => {
-    const endpoint = query
-        ? `${TMDB_CONFIG.BASE_URL}/search/movie?query=${encodeURIComponent(query)}`
-        : `${TMDB_CONFIG.BASE_URL}/discover/movie?sort_by=popularity.desc`;
+  let endpoint = query
+    ? `${TMDB_CONFIG.BASE_URL}/search/movie?query=${encodeURIComponent(query)}&api_key=${TMDB_CONFIG.API_KEY}`
+    : `${TMDB_CONFIG.BASE_URL}/discover/movie?sort_by=popularity.desc&api_key=${TMDB_CONFIG.API_KEY}`;
 
-    const response = await fetch(endpoint, {
-        method: "GET",
-        headers: TMDB_CONFIG.headers,
-    });
+  if (genreId) {
+    endpoint += `&with_genres=${genreId.toString()}`;
+  }
 
-    if (!response.ok) {
-        throw new Error(`Failed to fetch movies: ${response.statusText}`);
-    }
+  const response = await fetch(endpoint, {
+    method: "GET",
+    headers: TMDB_CONFIG.headers,
+  });
 
-    const data = await response.json();
-    return data.results;
+  if (!response.ok) {
+    throw new Error(`Failed to fetch movies: ${response.statusText}`);
+  }
+
+  const data = await response.json();
+  return data.results;
 };
+
+
 
 export const fetchMovieDetails = async (
   movieId: string
@@ -51,4 +59,17 @@ export const fetchMovieDetails = async (
     console.error("Error fetching movie details:", error);
     throw error;
   }
+};
+
+export const fetchGenres = async (): Promise<{ id: number; name: string }[]> => {
+  const response = await fetch(
+    `${TMDB_CONFIG.BASE_URL}/genre/movie/list?api_key=${TMDB_CONFIG.API_KEY}`,
+    {
+      method: "GET",
+      headers: TMDB_CONFIG.headers,
+    }
+  );
+  if (!response.ok) throw new Error("Failed to fetch genres");
+  const data = await response.json();
+  return data.genres;
 };
