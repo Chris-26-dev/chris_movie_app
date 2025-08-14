@@ -1,50 +1,72 @@
-# Welcome to your Expo app 👋
+# 🎬 Mobile Movie App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## 🤖 Introduction
+Built with **Expo**, **TypeScript**, and **Tailwind CSS**, this mobile app fetches movies and uses a **custom popularity algorithm** powered by **Appwrite**. It offers a seamless movie browsing experience, ranking titles based on user engagement metrics. Designed with modern UI/UX principles, the app is responsive, visually appealing, and scalable for real-world performance.
 
-## Get started
+---
 
-1. Install dependencies
+## ⚙️ Tech Stack
 
-   ```bash
-   npm install
-   ```
+### **Expo**
+An open-source platform for building universal native apps (Android, iOS, web) using JavaScript/TypeScript and React Native.  
+Key features: file-based routing via **Expo Router**, fast refresh, native modules (camera, maps, notifications), over-the-air updates (**EAS**), and streamlined app deployment.
 
-2. Start the app
+### **React Native**
+A framework for building mobile UIs with React. Enables **component-based, cross-platform development** with declarative UI, native API access, and tight Expo integration.
 
-   ```bash
-   npx expo start
-   ```
+### **Appwrite**
+An open-source backend-as-a-service platform providing:
+- Secure authentication (email/password, OAuth, SMS, magic links)
+- Databases, file storage (compression/encryption)
+- Real-time messaging
+- Serverless functions
+- Static hosting with **Appwrite Sites**
+All managed via a **unified console** and microservices architecture.
 
-In the output, you'll find options to open the app in a
+### **TypeScript**
+A statically typed superset of JavaScript with type annotations, interfaces, enums, generics, and strong tooling. Improves error detection, maintainability, and scalability.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### **Tailwind CSS + NativeWind**
+Tailwind CSS is a utility-first CSS framework for rapid UI development.  
+NativeWind brings Tailwind-style utilities to React Native & Expo, enabling **fast, consistent, and responsive UI** design.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+---
 
-## Get a fresh project
+## 🔋 Features
+- **Real-time data:** Fetch and display live movie data  
+- **Home Page:** Featured and discovery sections  
+- **Search Page:** Search for your favorite movies  
+- **Popularity Algorithm:** Tracks user reactions to rank top movies  
+- **Save Screen:** Shows all movies you’ve reacted to  
+- Clean architecture & reusable components for maintainability
 
-When you're ready, run:
+---
 
-```bash
-npm run reset-project
-```
+## 💡 Why I Built This
+I wanted to create a mobile app that goes beyond just listing movies. Many movie apps show trending films based on external sources, but I wanted **personalized popularity**—ranking movies based on actual **user interaction inside the app**. This makes recommendations feel more relevant and community-driven.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-## Learn more
+## 🛠 Problems I Solved
+- **Lack of personalized trending data:**  
+  Instead of pulling only external "popular" lists, the app tracks in-app **reactions** and dynamically updates rankings.
+- **Disconnected reaction data:**  
+  I implemented a **Save Screen** to give users a central place to revisit all movies they’ve interacted with.
+- **Seamless real-time updates:**  
+  The integration with Appwrite ensures the popularity rankings and saved movies update instantly.
 
-To learn more about developing your project with Expo, look at the following resources:
+---
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## 📚 What I Learned
+- Building and integrating a **custom popularity algorithm** with a backend service (Appwrite)
+- Implementing **real-time data synchronization** in a mobile app
+- Designing **scalable UI architecture** with reusable components
+- Styling mobile apps using **Tailwind CSS principles in NativeWind**
+- Improving TypeScript skills for type safety and maintainability
 
-## Join the community
+---
 
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## 📝 TODO (Future Improvements)
+- [ ] **Login system** — allow users to create and manage accounts  
+- [ ] **Improved UI** — enhance visual design and polish animations  
+- [ ] **Profile screen** — display user info, stats, and movie reaction history  
