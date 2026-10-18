@@ -7,7 +7,7 @@ import { fetchGenres, fetchMovies } from "@/services/api";
 import { getPopularMovies, getTrendingMovies } from "@/services/appwrite";
 import useFetch from "@/services/useFetch";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useFocusEffect } from "@react-navigation/native";
+import { useFocusEffect } from "expo-router/react-navigation";
 import { useRouter } from "expo-router";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ActivityIndicator, FlatList, Image, ScrollView as RNScrollView, ScrollView, Text, TouchableOpacity, View } from "react-native";

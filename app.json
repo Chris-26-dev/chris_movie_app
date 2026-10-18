@@ -7,7 +7,6 @@
     "icon": "./assets/images/movie2.png",
     "scheme": "chrismovieapp",
     "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
     "ios": {
       "supportsTablet": true
     },
@@ -15,8 +14,7 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/movie2.png",
         "backgroundColor": "#ffffff"
-      },
-      "edgeToEdgeEnabled": true
+      }
     },
     "web": {
       "bundler": "metro",

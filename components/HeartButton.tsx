@@ -18,27 +18,25 @@ const HeartButton = ({ movie, size = "small" }: HeartButtonProps) => {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        loadLikes();
-        checkLocalReacted();
+        let cancelled = false;
+        (async () => {
+            try {
+                const likesCount = await getMovieLikes(movie.id);
+                if (!cancelled) setLikes(likesCount);
+            } catch (error) {
+                console.error("Error loading likes:", error);
+            }
+            try {
+                const reacted = await AsyncStorage.getItem(`reacted_${movie.id}`);
+                if (!cancelled) setIsLiked(!!reacted);
+            } catch {
+                if (!cancelled) setIsLiked(false);
+            }
+        })();
+        return () => {
+            cancelled = true;
+        };
     }, [movie.id]);
-
-    const loadLikes = async () => {
-        try {
-            const likesCount = await getMovieLikes(movie.id);
-            setLikes(likesCount);
-        } catch (error) {
-            console.error("Error loading likes:", error);
-        }
-    };
-
-    const checkLocalReacted = async () => {
-        try {
-            const reacted = await AsyncStorage.getItem(`reacted_${movie.id}`);
-            setIsLiked(!!reacted);
-        } catch (error) {
-            setIsLiked(false);
-        }
-    };
 
     const handleLike = async () => {
         if (loading) return;
