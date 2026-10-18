@@ -17,11 +17,6 @@ const HeartButton = ({ movie, size = "small" }: HeartButtonProps) => {
     const [isLiked, setIsLiked] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    useEffect(() => {
-        loadLikes();
-        checkLocalReacted();
-    }, [movie.id]);
-
     const loadLikes = async () => {
         try {
             const likesCount = await getMovieLikes(movie.id);
@@ -35,10 +30,16 @@ const HeartButton = ({ movie, size = "small" }: HeartButtonProps) => {
         try {
             const reacted = await AsyncStorage.getItem(`reacted_${movie.id}`);
             setIsLiked(!!reacted);
-        } catch (error) {
+        } catch {
             setIsLiked(false);
         }
     };
+
+    useEffect(() => {
+        loadLikes();
+        checkLocalReacted();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [movie.id]);
 
     const handleLike = async () => {
         if (loading) return;
